@@ -2,8 +2,8 @@ package Cinematograf;
 
 public class Animatii extends Film {
 
-    public Animatii(int id, String titlu, int minute) {
-        super(id, titlu, minute);
+    public Animatii(String titlu, int minute) {
+        super(titlu, minute);
     }
 
     public void dublareLimba() {
@@ -12,6 +12,6 @@ public class Animatii extends Film {
 
     @Override
     public String toString() {
-        return "Animatii " + " " + super.getTitlu() + " " + super.getMinute();
+        return "Animatii " + " " + super.getId() + " " + super.getTitlu() + " " + super.getMinute();
     }
 }

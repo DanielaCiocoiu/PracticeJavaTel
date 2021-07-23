@@ -7,11 +7,13 @@ public abstract class Film {
     private String titlu;
     private int minute;
     private int id;
+    private static int _curent_id = 1;//incrementare automata, fara sa dau un parametru, plec de la o val predefinita de 1
 
-    public Film(int id, String titlu, int minute) {
+    public Film(String titlu, int minute) {
         this.titlu = titlu;
         this.minute = minute;
-        this.id = id;
+        this.id = Film._curent_id;
+        Film._curent_id++;
     }
 
     public String getTitlu() {

@@ -38,7 +38,7 @@ public class Cinematograf {
         }
     }
 
-    public Film stergeFilm(String titlu) {
+/*    public Film stergeFilm(String titlu) {
         int i = 0;
         for (Film film : filme) {
             if (film.getTitlu().equals(titlu)) {
@@ -46,11 +46,11 @@ public class Cinematograf {
             }
         }
         return filme.remove(i);
-    }
+    }*/
 
     //varianta cu id
 
-        /*public void stergeFilm(int id) {
+       /* public void stergeFilm(int id) {
         for (Film f : filme) {
             if (f.getId() == id) {
                 filme.remove(f);
@@ -62,5 +62,15 @@ public class Cinematograf {
         System.out.println("Filmul cautat nu exista!");
     }*/
 
+
+     public void stergeFilm(int id) {
+        for (Film f : filme) {
+            if (f.getId() == id) {
+                filme.remove(f);
+                return;
+            }
+        }
+        System.out.println("Filmul cautat nu exista!");
+    }
 }
 

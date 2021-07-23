@@ -18,7 +18,7 @@ public class demoCinematograf {
         System.out.println("Introduceti comanda:");
         System.out.println("AFISARE");
         System.out.println("AFISARE_ANIMATIE");
-        System.out.println("ADAUGARE_FILM  Ex: ADAUGARE_FILM DRAMA 1 2 3 4  sau  ADAUGARE_FILM ANIMATIE 1 2 3 4");
+        System.out.println("ADAUGARE_FILM  Ex: ADAUGARE_FILM DRAMA  2 3 NEMO 2  sau  ADAUGARE_FILM ANIMATIE  3 AAA 2");
         System.out.println("STERGE_FILM");
 
         while (true) {
@@ -26,33 +26,22 @@ public class demoCinematograf {
             String[] cuvinte = comanda.split(" ");
             switch (cuvinte[0]) {
                 case "ADAUGARE_FILM":
-                    int id = 0;
-                    try {
-                        id = Integer.parseInt(cuvinte[2]);
-                    } catch (NumberFormatException e) {
-                        e.printStackTrace();
-                    }
-                    String titlu = cuvinte[3];
-                    int minute = Integer.parseInt(cuvinte[4]);
+                    String titlu = cuvinte[2];
+                    int minute = Integer.parseInt(cuvinte[3]);
                     if("DRAMA".equals(cuvinte[1])) {
-                        int varsta = Integer.parseInt(cuvinte[5]);
-                        final Film drama = new Drama(id, titlu, minute, varsta);
+                        int varsta = Integer.parseInt(cuvinte[4]);
+                        Film drama = new Drama(titlu, minute, varsta);
                         cinematograf.addFilm(drama);
                         System.out.println("Am adaugat o drama in lista:  " + drama.toString());
                     } else if("ANIMATIE".equals(cuvinte[1])){
-                        final Film animatie = new Animatii(id,titlu, minute);
+                        Film animatie = new Animatii(titlu, minute);
                         cinematograf.addFilm(animatie);
                         System.out.println("Am adaugat o animatie in lista:  " + animatie.toString());
                     }
                     break;
                 case "STERGE_FILM":
-                    if("DRAMA".equals(cuvinte[1])) {
-                        final Film drama = cinematograf.stergeFilm(cuvinte[1]);
-                        System.out.println("Am sters: " + drama.toString());
-                    } else if("ANIMATIE".equals(cuvinte[1])){
-                        final Film animatie = cinematograf.stergeFilm(cuvinte[1]);
-                        System.out.println("Am sters:  " + animatie.toString());
-                    }
+                        cinematograf.stergeFilm(Integer.parseInt(cuvinte[1]));
+                        System.out.println("Am sters filmul cu id-ul: " + cuvinte[1]);
                     break;
                 case "AFISARE":
                     cinematograf.afisareFilm();
@@ -67,6 +56,20 @@ public class demoCinematograf {
                     System.out.println("Comanda introdusa nu exista!");
             }
         }
+
+
+
+        /*varianta de sters film cu if drama
+        case "STERGE_FILM":
+        if("DRAMA".equals(cuvinte[1])) {
+            final Film drama = cinematograf.stergeFilm(cuvinte[1]);
+            System.out.println("Am sters: " + drama.toString());
+        } else if("ANIMATIE".equals(cuvinte[1])){
+            final Film animatie = cinematograf.stergeFilm(cuvinte[1]);
+            System.out.println("Am sters:  " + animatie.toString());
+        }
+        break;*/
+
 
         /*      doar pentru test:
         Animatii animatii = new Animatii("Nemo", 120);
