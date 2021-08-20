@@ -36,15 +36,25 @@ public class ExStreamuriClasa {
 
                 Double sum =
                 pisici.stream()
-                        .map(p -> p.getGreutate())
-                        .reduce((double) 0, (a, b) -> a + b);
+                        .mapToDouble(Pisica::getGreutate)
+                        .sum();
+                // sau
+/*                       .map(p -> p.getGreutate())
+                        .reduce((double) 0, (a, b) -> a + b);*/
         System.out.println("Greutatea totala a pisicilor este: " + sum);
 
         List<Pisica> pisiciObeze1 = pisici.stream()
                 .filter(p -> p.getGreutate()>4)
-        .collect(Collectors.toList());
-        System.out.println("prima pisica cu greutate peste 4 kg: ");
+                .collect(Collectors.toList());
+        System.out.println("Cu lista: prima pisica cu greutate peste 4 kg: ");
         System.out.println(pisiciObeze1);
+
+//sau
+        Pisica grasa = pisici.stream()
+                .filter(p -> p.getGreutate()>4)
+                .findFirst().get();
+        System.out.println("Fara lista: prima pisica cu greutate peste 4 kg: ");
+        System.out.println(grasa);
 
     }
 
