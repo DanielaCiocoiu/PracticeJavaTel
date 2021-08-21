@@ -11,9 +11,10 @@ public class Factura {
     private boolean platitDevreme = false;
     private boolean platit = false;
 
-    public Factura(double sumaTotala, int nrFactura) {
-        this.sumaTotala = sumaTotala;
+    public Factura(int nrFactura, double sumaTotala) {
         this.nrFactura = nrFactura;
+        this.sumaTotala = sumaTotala;
+
     }
 
     public static ArrayList<Factura> getToateFacturile() {

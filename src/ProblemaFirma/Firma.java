@@ -12,18 +12,23 @@ public class Firma {
     private ArrayList<Angajat> angajati = new ArrayList<>();
     private static Firma singleton = null;
     private Firma(){
-
     }
-
     public static Firma getInstance(){
         if (singleton==null){
            singleton =new Firma();
         }
         return singleton;
     }
-
     public void angajeaza(Angajat angajat){
-        // sa parcurg arrayList-ul angajati si verific daca argumentul angajateste egal cu una din instantele din ArrayList
+        for (Angajat angajat1 : angajati){
+            if (angajat.equals(angajat1)) {
+                angajati.add(angajat1);
+            }else {
+                System.out.println("Acest angajat exista deja!");
+            }
+
+        }
+        // sa parcurg arrayList-ul angajati si verific daca argumentul angajat este egal cu una din instantele din ArrayList
         //daca nu este egala cu nicuna dintre instante, il adaug in arrayList
     }
 }

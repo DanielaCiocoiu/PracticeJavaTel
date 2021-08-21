@@ -36,5 +36,75 @@ Definiti o clasa DemoFirma in cadrul careia sa:
  */
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
+
+    public static void main(String[] args) {
+
+
+        Angajat angajat = new Angajat.Builder()
+                .setNrAngajat(1)
+                .setNume("Maia")
+                .setVarsta(18)
+                .setEmail("Maia@gmail.com")
+                .build();
+        Angajat angajat1 = new Angajat.Builder()
+                .setNrAngajat(2)
+                .setNume("Mircea")
+                .setVarsta(28)
+                .setEmail("Mircea@gmail.com")
+                .build();
+        Angajat angajat2 = new Angajat.Builder()
+                .setNrAngajat(3)
+                .setNume("Ion")
+                .setVarsta(23)
+                .setEmail("Ion@gmail.com")
+                .build();
+        Angajat angajat3 = new Angajat.Builder()
+                .setNrAngajat(3)
+                .setNume("Ion")
+                .setVarsta(23)
+                .setEmail("Ion@gmail.com")
+                .build();
+
+        Client client = new Client("Ion", 56, "Ion@gmail.com", 1);
+        Client client1 = new Client("Maia", 23, "Maia@gmail.com", 2);
+        Client client2 = new Client("Maria", 34, "Maria@gmail.com", 3);
+        Client client3 = new Client("Nicu", 56, "Nicu@gmail.com", 4);
+        Client client4 = new Client("Irina", 67, "Irina@gmail.com", 5);
+
+        // emiteti 5 facturi si platiti 3 dintre ele devreme si 2 la timp
+
+
+
+        List<Angajat> afiseazaAngajati = new ArrayList<>();
+        afiseazaAngajati.add(angajat);
+        afiseazaAngajati.add(angajat1);
+        afiseazaAngajati.add(angajat2);
+        afiseazaAngajati.add(angajat3);
+
+        for (Angajat angajatDeAfisat : afiseazaAngajati) {
+            System.out.println(angajatDeAfisat);
+        }
+
+//        angajat.emiteFactura(100, 1);
+//        angajat1.emiteFactura(50, 2);
+//        angajat2.emiteFactura(12, 3);
+//        angajat3.emiteFactura(34, 4);
+//        angajat3.emiteFactura(56, 5);
+
+        List<Factura> afiseazaFactura = new ArrayList<>();
+        afiseazaFactura.add(angajat.emiteFactura(100, 1));
+       afiseazaFactura.add(angajat1.emiteFactura(50, 2));
+       afiseazaFactura.add(angajat2.emiteFactura(12, 3));
+       afiseazaFactura.add(angajat3.emiteFactura(34, 4));
+       afiseazaFactura.add(angajat3.emiteFactura(56, 5));
+//        for (Factura facturaDeAfisat : afiseazaFactura) {
+//            System.out.println(facturaDeAfisat);
+//        }
+
+        Factura.afiseazaToateFacturile();
+    }
 }

@@ -18,9 +18,25 @@ public class Angajat extends Persoana {
     }
 
     public Factura emiteFactura(int sumaTotala, int nrFactura) {
-        Factura f = new Factura(sumaTotala,nrFactura);
+        Factura f = new Factura(sumaTotala, nrFactura);
         Factura.toateFacturile.add(f);
         return f;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (!(o instanceof Angajat)) {
+            return false;
+        }
+        Angajat a = (Angajat) o;
+        if (this.nrAngajat == a.nrAngajat) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static class Builder {
@@ -50,22 +66,14 @@ public class Angajat extends Persoana {
             return instance;
         }
     }
+
     @Override
-    public boolean equals(Object o){
-        if (o==null){
-            return false;
-        }
-        if (!(o instanceof Angajat)){
-            return false;
-        }
-        Angajat a = (Angajat)o;
-        if (this.nrAngajat == a.nrAngajat){
-            return true;
-        }else {
-            return false;
-        }
-
-
+    public String toString() {
+        return "Angajatul {" +
+                "nr:  " + nrAngajat +
+                ", numele: '" + nume + '\'' +
+                ", varsta: " + varsta +
+                ", email: '" + email + '\'' +
+                '}';
     }
-
 }
