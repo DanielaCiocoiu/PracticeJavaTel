@@ -8,10 +8,13 @@ package ProblemaFirma;
         - daca parametrul platitDevreme este true, atunci se va aplica un discount de 10% la totalul platit din factura.
 */
 
-public class Client extends Persoana {
-    public int nrClient;
+import java.util.Arrays;
+import java.util.Objects;
 
-    public Factura[] listaFacturiPlatite = new Factura[5];
+public class Client extends Persoana {
+    private int nrClient;
+
+    private Factura[] listaFacturiPlatite = new Factura[5];
 
     public Client(String nume, int varsta, String email, int nrClient) {
         super(nume, varsta, email);
@@ -37,4 +40,28 @@ public class Client extends Persoana {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return nrClient == client.nrClient && Arrays.equals(listaFacturiPlatite, client.listaFacturiPlatite);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(nrClient);
+        result = 31 * result + Arrays.hashCode(listaFacturiPlatite);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Clientul " +
+                "cu nr: " + nrClient +
+                //", listaFacturiPlatite: " + Arrays.toString(listaFacturiPlatite) +
+                ", nume: '" + nume + '\'' +
+                ", varsta: " + varsta +
+                ", email: '" + email + '\'';
+    }
 }

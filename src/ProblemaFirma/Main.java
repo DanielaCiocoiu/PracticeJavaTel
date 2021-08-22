@@ -34,16 +34,10 @@ Definiti o clasa DemoFirma in cadrul careia sa:
 
 ! Atentie - pentru indeplinirea cerintelor sunt necesare si alte elemente adaugate in cadrul claselor, pe langa cele enumerate mai sus
  */
-
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
-
     public static void main(String[] args) {
-
-
         Angajat angajat = new Angajat.Builder()
                 .setNrAngajat(1)
                 .setNume("Maia")
@@ -62,49 +56,75 @@ public class Main {
                 .setVarsta(23)
                 .setEmail("Ion@gmail.com")
                 .build();
-        Angajat angajat3 = new Angajat.Builder()
-                .setNrAngajat(3)
-                .setNume("Ion")
-                .setVarsta(23)
-                .setEmail("Ion@gmail.com")
-                .build();
 
+        Firma firmaSingleton = Firma.getInstance();
+
+        List<Angajat> angajati = new ArrayList<>();
+        angajati.add(angajat);
+        angajati.add(angajat1);
+        angajati.add(angajat2);
+        firmaSingleton.angajeaza(angajat);
+        firmaSingleton.angajeaza(angajat1);
+        firmaSingleton.angajeaza(angajat2);
+
+        System.out.println("Lista angajati: ");
+        angajati.stream()
+                .forEach(System.out::println);
+
+        List<Client> clients = new ArrayList<>();
         Client client = new Client("Ion", 56, "Ion@gmail.com", 1);
         Client client1 = new Client("Maia", 23, "Maia@gmail.com", 2);
         Client client2 = new Client("Maria", 34, "Maria@gmail.com", 3);
         Client client3 = new Client("Nicu", 56, "Nicu@gmail.com", 4);
         Client client4 = new Client("Irina", 67, "Irina@gmail.com", 5);
+        clients.add(client);
+        clients.add(client1);
+        clients.add(client2);
+        clients.add(client3);
+        clients.add(client4);
+
+        List<Factura> factura = new ArrayList<>();
+        factura.add(angajat.emiteFactura(1, 100));
+        factura.add(angajat1.emiteFactura(2, 100));
+        factura.add(angajat2.emiteFactura(3, 100));
+        factura.add(angajat2.emiteFactura(4, 100));
+        factura.add(angajat2.emiteFactura(5, 200));
+/*        System.out.println("*********** Afiseaza toate facturile fara discount din lista: ");
+        Factura.afiseazaToateFacturile();*/
 
         // emiteti 5 facturi si platiti 3 dintre ele devreme si 2 la timp
+        Map<Angajat, Factura> f = new HashMap<>();
+        f.put(angajat, angajat.emiteFactura(1, 100));
+        f.put(angajat1, angajat1.emiteFactura(2, 100));
+        f.put(angajat2, angajat2.emiteFactura(3, 100));
+        f.put(angajat2, angajat2.emiteFactura(4, 100));
+        f.put(angajat2, angajat2.emiteFactura(5, 200));
+        System.out.println("Lista angajati si facturile emise fara discount din map: ");
+        f.forEach((k,v) -> System.out.println(k + ", a emis " + v));
 
 
+      /*  List<Factura> afiseazaClienti = new ArrayList<>();
+        client.platesteFactura(factura.get(0), true);
+        client1.platesteFactura(factura.get(1),true );
+        client2.platesteFactura(factura.get(2),false );
+        client3.platesteFactura(factura.get(3),false );
+        client4.platesteFactura(factura.get(4),false );
+        afiseazaClienti.addAll(factura);
+        System.out.println("*********** Lista facturi cu discount: ");
+        afiseazaClienti.stream()
+                .forEach(System.out::println);*/
 
-        List<Angajat> afiseazaAngajati = new ArrayList<>();
-        afiseazaAngajati.add(angajat);
-        afiseazaAngajati.add(angajat1);
-        afiseazaAngajati.add(angajat2);
-        afiseazaAngajati.add(angajat3);
+            // afisati toate instantele de factura ce au fost emise
 
-        for (Angajat angajatDeAfisat : afiseazaAngajati) {
-            System.out.println(angajatDeAfisat);
-        }
+        Map<Client, Factura> clientFacturaMap = new LinkedHashMap<>();
+       clientFacturaMap.put(client, client.platesteFactura(factura.get(0),  true));
+        clientFacturaMap.put(client1, client1.platesteFactura(factura.get(1), true));
+        clientFacturaMap.put(client2, client2.platesteFactura(factura.get(2), false));
+        clientFacturaMap.put(client3, client3.platesteFactura(factura.get(3), false));
+        clientFacturaMap.put(client4, client4.platesteFactura(factura.get(4), false));
+        System.out.println("*********** Lista clienti  si facturi: ");
+        clientFacturaMap.forEach((k,v) -> System.out.println(k + ", a platit " + v));
 
-//        angajat.emiteFactura(100, 1);
-//        angajat1.emiteFactura(50, 2);
-//        angajat2.emiteFactura(12, 3);
-//        angajat3.emiteFactura(34, 4);
-//        angajat3.emiteFactura(56, 5);
-
-        List<Factura> afiseazaFactura = new ArrayList<>();
-        afiseazaFactura.add(angajat.emiteFactura(100, 1));
-       afiseazaFactura.add(angajat1.emiteFactura(50, 2));
-       afiseazaFactura.add(angajat2.emiteFactura(12, 3));
-       afiseazaFactura.add(angajat3.emiteFactura(34, 4));
-       afiseazaFactura.add(angajat3.emiteFactura(56, 5));
-//        for (Factura facturaDeAfisat : afiseazaFactura) {
-//            System.out.println(facturaDeAfisat);
-//        }
-
-        Factura.afiseazaToateFacturile();
     }
+
 }

@@ -1,5 +1,7 @@
 package ProblemaFirma;
 
+import java.util.Objects;
+
 /*3. Angajat - va implementa Builder Design Pattern
         - clasa ce mosteneste clasa Persoana si are atribut in plus: nrAngajat
         - comportament - emiteFactura - returneaza o instanta a clasei Factura.*/
@@ -17,8 +19,8 @@ public class Angajat extends Persoana {
         super("", 0, "");
     }
 
-    public Factura emiteFactura(int sumaTotala, int nrFactura) {
-        Factura f = new Factura(sumaTotala, nrFactura);
+    public Factura emiteFactura(int nrFactura , int sumaTotala) {
+        Factura f = new Factura(nrFactura, sumaTotala);
         Factura.toateFacturile.add(f);
         return f;
     }
@@ -68,12 +70,16 @@ public class Angajat extends Persoana {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(nrAngajat);
+    }
+
+    @Override
     public String toString() {
-        return "Angajatul {" +
+        return "Angajatul " +
                 "nr:  " + nrAngajat +
                 ", numele: '" + nume + '\'' +
                 ", varsta: " + varsta +
-                ", email: '" + email + '\'' +
-                '}';
+                ", email: '" + email +" ";
     }
 }
