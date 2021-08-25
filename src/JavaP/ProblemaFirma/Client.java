@@ -1,4 +1,4 @@
-package ProblemaFirma;
+package JavaP.ProblemaFirma;
 /*
 2. Client:
         - clasa ce mosteneste clasa Persoana si are ca atribute in plus: nrClient, listaFacturiPlatite (array de 5 elemente)

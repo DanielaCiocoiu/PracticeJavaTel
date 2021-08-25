@@ -1,5 +1,4 @@
-package ProblemaFirma;
-import JavaA.Cinematograf.Film;
+package JavaP.ProblemaFirma;
 
 import java.util.ArrayList;
 import java.util.Objects;

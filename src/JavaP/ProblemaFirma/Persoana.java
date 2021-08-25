@@ -1,6 +1,5 @@
-package ProblemaFirma;
+package JavaP.ProblemaFirma;
 
-import java.time.Period;
 import java.util.Objects;
 
 public abstract class Persoana {

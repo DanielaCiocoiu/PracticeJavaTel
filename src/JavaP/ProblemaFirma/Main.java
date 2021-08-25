@@ -1,4 +1,4 @@
-package ProblemaFirma;
+package JavaP.ProblemaFirma;
 /*
 Implementati urmatoarele clase:
 1. Persoana:
@@ -34,6 +34,8 @@ Definiti o clasa DemoFirma in cadrul careia sa:
 
 ! Atentie - pentru indeplinirea cerintelor sunt necesare si alte elemente adaugate in cadrul claselor, pe langa cele enumerate mai sus
  */
+import JavaA.Cinematograf.FacturaDigi;
+
 import java.util.*;
 
 public class Main {
@@ -56,19 +58,23 @@ public class Main {
                 .setVarsta(23)
                 .setEmail("Ion@gmail.com")
                 .build();
+        Angajat angajat3 = new Angajat.Builder()
+                .setNrAngajat(3)
+                .setNume("Ion")
+                .setVarsta(23)
+                .setEmail("Ion@gmail.com")
+                .build();
 
         Firma firmaSingleton = Firma.getInstance();
 
-        List<Angajat> angajati = new ArrayList<>();
-        angajati.add(angajat);
-        angajati.add(angajat1);
-        angajati.add(angajat2);
+        //List<Angajat> angajati = new ArrayList<>();
         firmaSingleton.angajeaza(angajat);
         firmaSingleton.angajeaza(angajat1);
         firmaSingleton.angajeaza(angajat2);
+        firmaSingleton.angajeaza(angajat3);
 
         System.out.println("Lista angajati: ");
-        angajati.stream()
+        firmaSingleton.getAngajati().stream()
                 .forEach(System.out::println);
 
         List<Client> clients = new ArrayList<>();
@@ -89,6 +95,9 @@ public class Main {
         factura.add(angajat2.emiteFactura(3, 100));
         factura.add(angajat2.emiteFactura(4, 100));
         factura.add(angajat2.emiteFactura(5, 200));
+        Factura factura1 = new FacturaDigi(6,500);
+        factura.add(factura1);
+
 /*        System.out.println("*********** Afiseaza toate facturile fara discount din lista: ");
         Factura.afiseazaToateFacturile();*/
 
