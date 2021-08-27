@@ -19,10 +19,10 @@ public class Angajat extends Persoana {
         super("", 0, "");
     }
 
-    public Factura emiteFactura(int nrFactura , int sumaTotala) {
-        Factura f = new Factura(nrFactura, sumaTotala);
-        Factura.toateFacturile.add(f);
-        return f;
+    public Factura emiteFactura(Factura a) {
+
+        Factura.toateFacturile.add(a);
+        return a;
     }
 
     @Override

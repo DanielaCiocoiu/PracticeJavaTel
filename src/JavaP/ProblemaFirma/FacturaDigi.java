@@ -1,8 +1,7 @@
-package JavaA.Cinematograf;
-
-import JavaP.ProblemaFirma.Factura;
+package JavaP.ProblemaFirma;
 
 public class FacturaDigi extends Factura {
+
 
     public FacturaDigi(int nrFactura, double sumaTotala) {
         super(nrFactura, sumaTotala);
@@ -10,6 +9,6 @@ public class FacturaDigi extends Factura {
 
     @Override
     public String toString() {
-        return "FacturaDigi{}";
+        return "FacturaDigi cu: " + super.toString();
     }
 }

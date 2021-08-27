@@ -81,8 +81,7 @@ public class Factura {
 
     @Override
     public String toString() {
-        return " factura cu " +
-                "numarul: " + nrFactura +
+        return  "numarul: " + nrFactura +
                 ", sumaTotala: " + sumaTotala +
                 ", platit devreme: " + platitDevreme +
                 ", platit: " + platit;
