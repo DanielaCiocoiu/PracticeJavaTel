@@ -1,4 +1,4 @@
-package Ex4Intrerupator;
+package JavaA.Intrerupator;
 
 /*Sa se creeze clasele Tv, Laptop, Boxa care mostenesc clasa Electronic.
 In metoda main din clasa DemoOnOff, sa se creeze cate o instanta de Tv,
@@ -7,7 +7,7 @@ Laptop si Boxa si sa se porneasca si opreasca fiecare dintre ele,
 
 public class DemoOff {
     public static void main(String[] args) throws AlreadyOffException, AlreadyOnException {
-        Electronic tv = new TV();
+       Electronic tv = new TV();
         //tv.turnOff();
         System.out.println(tv.toString());
         Boxa boxa = new Boxa();

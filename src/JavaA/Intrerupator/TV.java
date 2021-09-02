@@ -1,5 +1,4 @@
-package Ex4Intrerupator;
-
+package JavaA.Intrerupator;
 public class TV extends Electronic {
     public boolean off;
 

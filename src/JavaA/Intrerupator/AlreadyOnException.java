@@ -1,4 +1,4 @@
-package Ex4Intrerupator;
+package JavaA.Intrerupator;
 
 public class AlreadyOnException extends Exception {
     public AlreadyOnException(String message) {

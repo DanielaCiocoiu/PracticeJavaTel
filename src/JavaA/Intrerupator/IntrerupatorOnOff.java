@@ -1,4 +1,4 @@
-package Ex4Intrerupator;
+package JavaA.Intrerupator;
 
 /*2. Sa se creeze :
         * interfata IntrerupatorOnOff cu urmatoarele metode abstracte:

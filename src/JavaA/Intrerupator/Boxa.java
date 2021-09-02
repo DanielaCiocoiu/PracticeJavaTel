@@ -1,6 +1,6 @@
-package Ex4Intrerupator;
+package JavaA.Intrerupator;
 
-public class Boxa extends Electronic{
+public class Boxa extends Electronic {
 public boolean on;
     public Boxa() {
         super();

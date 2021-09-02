@@ -1,4 +1,4 @@
-package Ex4Intrerupator;
+package JavaA.Intrerupator;
 
 /*a se creeze clasa Electronic care implementeaza interfata IntrerupatorOnOff,
 are atributul boolean on si constructorul fara parametri atribuie valoarea false atributului on.
