@@ -11,7 +11,8 @@ package JavaP.ProblemaFirma;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Client extends Persoana {
+public class Client extends Persoana implements AfisareFacturi, PlatesteFactura {
+
     private int nrClient;
 
     private Factura[] listaFacturiPlatite = new Factura[5];
@@ -21,6 +22,7 @@ public class Client extends Persoana {
         this.nrClient = nrClient;
     }
 
+    @Override
     public Factura platesteFactura(Factura factura, boolean platitDevreme) {
         factura.setPlatit(true);//initial pleaca de pe false si o setez pe true
         if (platitDevreme) {
@@ -33,11 +35,22 @@ public class Client extends Persoana {
                 listaFacturiPlatite[i] = factura;
                 break;
             }
-
         }
-
         return factura;
+    }
 
+    /*   Creati o interfata functionala - AfisareFacturi cu metoda afiseazaFactura().
+       Implementati aceasta interfata in cadrul clasei Client.
+       La apelul acestei metodei vor putea fi afisate doar un anumit tip de facturi (Digi/Enel/ApaNova).
+   */
+
+    @Override
+    public Factura afiseazaFactura(Factura factura) {
+        if (factura instanceof FacturaDigi) {
+        } else if (factura instanceof FacturaEnel) {
+        } else if (factura instanceof FacturaApaNova) {
+        }
+        return factura;
     }
 
     @Override

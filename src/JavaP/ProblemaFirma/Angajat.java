@@ -5,9 +5,10 @@ import java.util.Objects;
 /*3. Angajat - va implementa Builder Design Pattern
         - clasa ce mosteneste clasa Persoana si are atribut in plus: nrAngajat
         - comportament - emiteFactura - returneaza o instanta a clasei Factura.*/
-public class Angajat extends Persoana {
+public class Angajat extends Persoana implements PlatesteFactura {
 
     private int nrAngajat;
+    private Factura[] listaFacturiPlatite = new Factura[5];
 
     private Angajat(String nume, int varsta, String email, int nrAngajat) {
         super(nume, varsta, email);
@@ -41,6 +42,37 @@ public class Angajat extends Persoana {
         }
     }
 
+    @Override
+    public Factura platesteFactura(Factura factura, boolean platitDevreme) {
+        factura.setPlatit(true);//initial pleaca de pe false si o setez pe true
+        if (platitDevreme) {
+            factura.setPlatitDevreme(true);
+            double totalCurent = factura.getSumaTotala();
+            factura.setSumaTotala(totalCurent * 0.90);
+        }
+        for (int i = 0; i < listaFacturiPlatite.length; i++) {
+            if (listaFacturiPlatite[i] == null) {
+                listaFacturiPlatite[i] = factura;
+                break;
+            }
+        }
+        return factura;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nrAngajat);
+    }
+
+    @Override
+    public String toString() {
+        return "Angajatul " +
+                "nr:  " + nrAngajat +
+                ", numele: '" + nume + '\'' +
+                ", varsta: " + varsta +
+                ", email: '" + email + " ";
+    }
+
     public static class Builder {
         private Angajat instance = new Angajat();
 
@@ -67,19 +99,5 @@ public class Angajat extends Persoana {
         public Angajat build() {
             return instance;
         }
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nrAngajat);
-    }
-
-    @Override
-    public String toString() {
-        return "Angajatul " +
-                "nr:  " + nrAngajat +
-                ", numele: '" + nume + '\'' +
-                ", varsta: " + varsta +
-                ", email: '" + email +" ";
     }
 }

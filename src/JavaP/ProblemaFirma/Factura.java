@@ -61,9 +61,10 @@ public class Factura {
         this.platit = platit;
     }
 
-    public static void afiseazaToateFacturile() {
+    public static boolean afiseazaToateFacturileDinFactura() {
         toateFacturile.stream()
                 .forEach(System.out::println);
+        return false;
     }
 
     @Override

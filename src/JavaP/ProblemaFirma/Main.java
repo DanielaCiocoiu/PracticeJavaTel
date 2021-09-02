@@ -74,7 +74,7 @@ public class Main {
         firmaSingleton.getAngajati().stream()
                 .forEach(System.out::println);
 
-        List<Client> clients = new ArrayList<>();
+        List<PlatesteFactura> clients = new ArrayList<>();
         Client client = new Client("Ion", 56, "Ion@gmail.com", 1);
         Client client1 = new Client("Maia", 23, "Maia@gmail.com", 2);
         Client client2 = new Client("Maria", 34, "Maria@gmail.com", 3);
@@ -86,22 +86,22 @@ public class Main {
         clients.add(client3);
         clients.add(client4);
 
-        List<Factura> list = new ArrayList<>();
+
         Factura factura1 = new FacturaDigi(1, 100);
         Factura factura2 = new FacturaEnel(2, 200);
         Factura factura3 = new FacturaApaNova(3, 300);
         Factura factura4 = new FacturaApaNova(4, 400);
         Factura factura5 = new FacturaApaNova(5, 500);
-        Factura factura6 = new FacturaApaNova(5, 500);
-        list.add(factura1);
-        list.add(factura2);
-        list.add(factura3);
-        list.add(factura4);
-        list.add(factura5);
-        list.add(factura6);
+        Factura factura6 = new FacturaApaNova(6, 500);
+        Factura.toateFacturile.add(factura1);
+        Factura.toateFacturile.add(factura2);
+        Factura.toateFacturile.add(factura3);
+        Factura.toateFacturile.add(factura4);
+        Factura.toateFacturile.add(factura5);
+        Factura.toateFacturile.add(factura6);
 
         System.out.println("************************* Afiseaza toate facturile fara discount din lista: *************************");
-        Factura.afiseazaToateFacturile();
+        System.out.println(Factura.afiseazaToateFacturileDinFactura());
 
         // emiteti 5 facturi si platiti 3 dintre ele devreme si 2 la timp
         System.out.println("************************* Lista angajati si facturile emise fara discount din map: ************************* ");
@@ -116,17 +116,50 @@ public class Main {
 
             // afisati toate instantele de factura ce au fost emise
 
-        Map<Client, Factura> clientFacturaMap = new LinkedHashMap<>();
         System.out.println("************************* Lista clienti  si facturi: **********************");
-       clientFacturaMap.put(client, client.platesteFactura(list.get(0),  true));
-        clientFacturaMap.put(client1, client1.platesteFactura(list.get(1), true));
-        clientFacturaMap.put(client2, client2.platesteFactura(list.get(2), false));
-        clientFacturaMap.put(client3, client3.platesteFactura(list.get(3), false));
-        clientFacturaMap.put(client4, client4.platesteFactura(list.get(4), false));
-
+        Map<PlatesteFactura, Factura> clientFacturaMap = new LinkedHashMap<>();
+       clientFacturaMap.put(client, client.platesteFactura(factura1,  true));
+        clientFacturaMap.put(client1, client1.platesteFactura(factura2, true));
+        clientFacturaMap.put(client2, client2.platesteFactura(factura3, false));
+        clientFacturaMap.put(client3, client3.platesteFactura(factura4, false));
+        clientFacturaMap.put(client4, client4.platesteFactura(factura5, false));
+        clientFacturaMap.put(client2, client2.platesteFactura(factura6, false));
         clientFacturaMap.forEach((k,v) -> System.out.println(k + ", a platit " + v));
 
+  /*   Creati o interfata functionala - AfisareFacturi cu metoda afiseazaFactura().
+       Implementati aceasta interfata in cadrul clasei Client.
+       La apelul acestei metodei vor putea fi afisate doar un anumit tip de facturi (Digi/Enel/ApaNova).
+   */
+        System.out.println("************************* afiseazaFactura din Interfata fucntionala Map: **********************");
+        Map<PlatesteFactura, Factura> clientFactura = new LinkedHashMap<>();
+        clientFactura.put(client, client.afiseazaFactura(factura1));
+        clientFactura.put(client1, client1.afiseazaFactura(factura2));
+        clientFactura.forEach((k,v) -> System.out.println(k + ", a platit " + v));
 
+        System.out.println("************************* afiseazaFactura din Interfata fucntionala List: **********************");
+        System.out.println(client2.afiseazaFactura(factura3));
+        System.out.println(client3.afiseazaFactura(factura4));
+
+
+/*
+ Definiti interfata PlatesteFactura ce va contine .
+ Aceasta interfata va fi implementata de clasele Client si Angajat - clientul va plati facturile emise de anagajti,
+ in timp ce angajatii vor plati facturi emise de furnizor. (nu este necesara definirea unei entitati Furnizor sau
+ salvarea insintatelor de factura pe care le platesc furnizorii)*/
+        System.out.println("************************* clientul va plati facturile emise de anagajti: **********************");
+        Map<Client, Factura> platiClientiFacturiEmiseDeAngajati = new LinkedHashMap<>();
+        platiClientiFacturiEmiseDeAngajati.put(client, client.platesteFactura(factura1,  true));
+        platiClientiFacturiEmiseDeAngajati.put(client1, client1.platesteFactura(factura2, true));
+        platiClientiFacturiEmiseDeAngajati.put(client2, client2.platesteFactura(factura3, false));
+        platiClientiFacturiEmiseDeAngajati.forEach((k,v) -> System.out.println(k + ", a platit " + v));
+
+
+        System.out.println("************************* angajatii vor plati facturi emise de furnizor: **********************");
+        Map<Angajat, Factura> platiFacturiAngajatiEmiseDeFurnizor = new LinkedHashMap<>();
+        platiFacturiAngajatiEmiseDeFurnizor.put(angajat2, angajat2.platesteFactura(factura1,  true));
+        platiFacturiAngajatiEmiseDeFurnizor.put(angajat3, angajat3.platesteFactura(factura2, true));
+        platiFacturiAngajatiEmiseDeFurnizor.put(angajat1, angajat1.platesteFactura(factura3, false));
+        platiFacturiAngajatiEmiseDeFurnizor.forEach((k,v) -> System.out.println(k + ", a platit " + v));
 
               /*  List<Factura> afiseazaClienti = new ArrayList<>();
         client.platesteFactura(factura.get(0), true);
