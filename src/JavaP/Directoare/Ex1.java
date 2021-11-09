@@ -31,9 +31,20 @@ director1
 */
 public class Ex1 {
     public static void main(String[] args) throws IOException {
-        String cale = "Director1/Director3/Director4/fisierul_meu.txt";
+  /*      Investigatia problemei cu locatia data de metoda getAbsolutePath()
+        Rularea pe care o vedeam noi era cea corecta! Pentru ca executia NU are loc din locatia in care avem fisierul .java salvat
+        ci din locatia in care se genereaza fisierul .class. Daca iti aduci aminte,
+        acestea sunt fisierele executate de catre JVM, nu cele cu extensia .java.
+                Daca vrem sa vedem structura completa, raportata si la proiect, trebuie sa o includem noi in argumentul dat in cadrul File.
 
-/*        Path path = Paths.get(cale );
+        File file = new File("src/Fisiere/CreareFoldere.java");
+        Path path = Path.of(file.getAbsolutePath());
+        System.out.println(path);*/
+
+
+        String cale = "src/Fisiere/CreareFoldere.java/Director1/Director3/Director4/fisierul_meu.txt";
+
+        Path path = Paths.get(cale );
         if (Files.exists(path)){
             System.out.println("Structura deja exista!");
         }else {
@@ -41,9 +52,9 @@ public class Ex1 {
         }
 
         File file = new File(cale);
-        System.out.println(file.getAbsolutePath());*/
+        System.out.println(file.getAbsolutePath());
 
-        //varianta File
+        //*****************varianta File
 
     /*    File file = new File(cale);
         Path locatieCurenta = Paths.get(".");
@@ -61,7 +72,8 @@ public class Ex1 {
 
         FileWriter fileWriter = null;
 
-        //varianta de try fara resurse de creere si scriere in fisier
+        //***************** varianta de try fara resurse de creere si scriere in fisier
+
 /*        boolean succes = fisier.createNewFile();
         if (succes) {
             try {
@@ -78,7 +90,8 @@ public class Ex1 {
 
         }*/
 
-        //varianta de try cu resurse de creere si scriere in fisier
+        //***************** varianta de try cu resurse de creere si scriere in fisier
+
 /*        boolean succes = fisier.createNewFile();
         if (succes) {
             try(FileWriter fileWriter = new FileWriter(cale)) {
@@ -90,7 +103,7 @@ public class Ex1 {
             }
         }*/
 
-        //sterg fisierul din Path
+        // ***************** sterg fisierul din Path
 /*        boolean success = Files.deleteIfExists(fisier.toPath());
         if (success) {
             System.out.println("Ok, fisier sters");
@@ -102,7 +115,7 @@ public class Ex1 {
         fisier.setReadOnly();*/
 
 
-      //  5. Afisati doar sub-directoarele din director1
+      // ***************** 5. Afisati doar sub-directoarele din director1
 /*        Path locatie = Paths.get("Director1/");
         Files.walk(locatie, 2)
                 .filter(path -> Files.isDirectory(path) && !path.equals(locatie))//afisez mai putin directorul1 sau cel original
@@ -113,9 +126,9 @@ public class Ex1 {
 
     }
 
-   // 6. Scrieti o metoda recursiva pentru a stege continutul director1.
+   //***************** 6. Scrieti o metoda recursiva pentru a stege continutul director1.
     public static boolean stergeRecursiv(File director){
-     //
+
      File [] continutDiretoare = director.listFiles();
      if (continutDiretoare != null){
       for (File file : continutDiretoare){
@@ -124,6 +137,5 @@ public class Ex1 {
      }
      return director.delete();
     }
-
 
 }

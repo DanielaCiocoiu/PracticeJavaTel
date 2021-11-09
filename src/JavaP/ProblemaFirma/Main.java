@@ -35,6 +35,26 @@ Definiti o clasa DemoFirma in cadrul careia sa:
 ! Atentie - pentru indeplinirea cerintelor sunt necesare si alte elemente adaugate in cadrul claselor, pe langa cele enumerate mai sus
  */
 
+
+/*
+Definiti urmatoarele clase, care vor mosteni clasa Factura.
+
+- FacturaDigi
+- FacturaEnel
+- FacturaApaNova
+
+Inlocuiti instantierile clasei Factura cu cele de mai sus.
+
+Creati o interfata functionala - AfisareFacturi cu metoda afiseazaFactura(). Implementati aceasta interfata in cadrul
+clasei Client. La apelul acestei metodei vor putea fi afisate doar un anumit tip de facturi (Digi/Enel/ApaNova).
+
+Definiti interfata PlatesteFactura ce va contine .
+
+Aceasta interfata va fi implementata de clasele Client si Angajat - clientul va plati facturile emise de anagajti,
+in timp ce angajatii vor plati facturi emise de furnizor. (nu este necesara definirea unei entitati Furnizor sau
+salvarea insintatelor de factura pe care le platesc furnizorii).
+*/
+
 import java.util.*;
 
 public class Main {
