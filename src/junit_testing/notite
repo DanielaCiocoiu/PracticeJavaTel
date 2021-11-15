@@ -1,0 +1,43 @@
+1. FUNCTIONAL TESTING
+- verifica/valideaza ca un sistem software urmareste sau indeplineste cerintele de dezvoltare
+si functionalitatile de baza dorite (project manager, business analyst etc.)
+2. NON-FUNCTIONAL TESTING
+- verifica performanta, reliability, scalabilitate, situatiile de disaster
+recovery
+
+UNIT TESTING - tip de testare functionala, white-box (necesita o intelegere/cunoastere a structurii
+interne a aplicatiei si a algoritmilor folositi in aceasta)
+- testele unitare sunt scrise in general pentru cate o metoda (functie)
+- cele mai numeroase in "piramida" testelor
+- sunt de ajutor pentur situatiile in care vrem sa realizam un pull-request - verificam ca
+functionalitatile existente nu sunt impactate
+- ne ajuta sa intelegem mai bine design-ul claselor - intrucat se comporta ca un "caller" - ne ajuta
+sa intelegem daca codul scris este clar si usor de citit
+
+JUnit 5 - 2017 - poate fi folosit si integrat cu alte framework-uri (Mockito, Selenium, Cucumber)
+- necesita instalarea Java 8 - multe componente compatibilte cu expresii lambda si streams API
+
+Best practice - numele de teste trebuie sa indice cat mai clar ce anume se testeaza si numele testelor
+sa inceapa cu test sau should (shouldContainOneMovie, testMovieListContainsOneMovie)
+
+Structura recomandata pentru teste -> GIVEN / WHEN/ THEN (ARRANGE/ACT/ASSERT)
+GIVEN - conditiile initiale
+WHEN - apelarea metodei testate si stocarea rezultatelor
+THEN - verificarea/aplicarea metodelor de assert
+
+ASSERT - verifica daca anumite rezultate/valori returnate de catre metodele teste sunt cele
+la care ne asteptam noi
+- daca nu am metode de assert folosite sau NU am un motiv pentru care un test sa fie marcat FAIL ->
+el va fi marcat PASS
+
+
+assertThrows - verifica daca o exceptie (sau un anumit tip de exceptie) este aruncata in momentul in care o secventa de cod
+este executata
+- secventa de cod trebuie definita in cadrul unui Executable - care ma ajuta prin faptul ca nu ruleaza codul direct la
+definitie, ci doar cand am nevoie de el in metoda de assert
+- aceasta metoda de assert "contine" exceptia care este aruncata fara a-mi intrerupe executia testului
+
+@Disabled - marcheaza un test ca ignorat in cadrul executiei, indiferent de mediul in care executia are loc
+- nu marcheaza testul ca fiind failed, ci doar ignored
+
+@DisplayName - schimb numele unui test in ceva mai usor de citit
