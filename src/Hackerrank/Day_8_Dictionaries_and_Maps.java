@@ -10,18 +10,18 @@ public class Day_8_Dictionaries_and_Maps {
 
         HashMap<String, Integer> myMap = new HashMap<>();
 
-        int n = scanner.nextInt();
+        int inputNumber = scanner.nextInt();
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < inputNumber; i++) { //pun in map numele si nr. de telefon
             String name = scanner.next();
             int phone = scanner.nextInt();
 
             myMap.put(name, phone);
         }
         while (scanner.hasNext()) {
-            String s = scanner.next();
-            if (myMap.containsKey(s)) {
-                System.out.println(s + " = " + myMap.get(s));
+            String nameSearched = scanner.next();
+            if (myMap.containsKey(nameSearched)) {
+                System.out.println(nameSearched + " = " + myMap.get(nameSearched));
             } else {
                 System.out.println("Not found");
             }
@@ -38,7 +38,9 @@ public class Day_8_Dictionaries_and_Maps {
     harry 12299933
     sam
     edward
-    harry*/
+    harry
+
+    */
 
 
 

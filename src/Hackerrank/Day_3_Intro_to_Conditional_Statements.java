@@ -8,16 +8,16 @@ public class Day_3_Intro_to_Conditional_Statements {
 
     public static void main(String[] args) throws IOException {
 
-        int N = scanner.nextInt();
+        int inputNumber = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        if (N % 2 != 0) {
+        if (inputNumber % 2 != 0) {
             System.out.println("Weird");
-        } else if (N % 2 == 0 && (N >= 2) && (N <= 5)) {
+        } else if (inputNumber % 2 == 0 && (inputNumber >= 2) && (inputNumber <= 5)) {
             System.out.println("Not Weird");
-        } else if (N % 2 == 0 && (N >= 6) && (N <= 20)) {
+        } else if (inputNumber % 2 == 0 && (inputNumber >= 6) && (inputNumber <= 20)) {
             System.out.println("6 Weird");
-        } else if (N % 2 == 0 && (N >= 20)) {
+        } else if (inputNumber % 2 == 0 && (inputNumber >= 20)) {
             System.out.println(" 20 Not Weird");
         }
         scanner.close();

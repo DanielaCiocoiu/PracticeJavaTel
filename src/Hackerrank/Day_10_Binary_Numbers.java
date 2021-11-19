@@ -3,31 +3,44 @@ package Hackerrank;
 import java.util.Scanner;
 
 public class Day_10_Binary_Numbers {
-    private static final Scanner scanner = new Scanner(System.in);
+    /*
+     * Given a base-10 integer, n, convert it to binary (base-2). Then find and print the base-10 integer denoting the maximum number of consecutive 1's in n's binary representation.
+     * Input Format:
+     * - A single integer, n.
+     * Output Format:
+     * - Print a single base-10 integer denoting the maximum number of consecutive 1's in the binary representation of n.
+     */
 
     public static void main(String[] args) {
-        int inputNumar = scanner.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
         scanner.close();
 
-        int restulImp, contor = 0, limitaMin = 0;
+        int restulImp, contor = 0, maxCount = 0;
 
         String s = "";
 
-        while (inputNumar > 0) {                                            //input 6       5
-            restulImp = inputNumar % 2;                                     //6 3 1         5 2 1
-            if (restulImp == 1) {                                           //0 0 1         1 1
-                contor ++; //daca este impar, add +                         //0 0 2         1
-                if (contor > limitaMin) { //daca contorul  > 0
-                       limitaMin = contor;  //lim = contor                       0 1 2      1 1
-                }
+        while (number > 0) {
 
+            //Get residue
+            restulImp = number % 2;
+            number /= 2;
+
+            //Validate if residue is 1
+            if (restulImp == 1) {
+
+                contor++; //daca este impar, add +
+
+                //Compare current count with max count
+                if (contor > maxCount) { //daca contorul  > 0
+                    maxCount = contor;  //lim = contor
+                }
             } else {
-                contor = 0;                                                 //0 1 2         1 1
+                contor = 0;
             }
-            s = restulImp + s; // concatenez restul impartirii                1 1 0         1 0 1
-            inputNumar = inputNumar / 2; //6 3 1                                            5 2 1
+            s = restulImp + s; // concatenez restul impartirii
         }
-        System.out.println("Binary number for: " + inputNumar + " este: " + limitaMin); //rezultat pt 6 = 2  pt 5 =  1
+        System.out.println("Binary number for: " + number + " este: " + maxCount); //rezultat pt 6 = 2  pt 5 =  1
     }
 }

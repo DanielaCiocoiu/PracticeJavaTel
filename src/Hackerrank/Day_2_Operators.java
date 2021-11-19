@@ -6,9 +6,9 @@ public class Day_2_Operators {
     static void solve(double meal_cost, int tip_percent, int tax_percent) {
         double totalCost = 0.0;
 
-        totalCost += meal_cost;
-        totalCost += (meal_cost*tip_percent)/100;
-        totalCost += (meal_cost*tax_percent)/100;
+        totalCost = totalCost + meal_cost;
+        totalCost = totalCost + (meal_cost*tip_percent)/100;
+        totalCost = totalCost + (meal_cost*tax_percent)/100;
         System.out.println((int)Math.round(totalCost));
 
 /*        double tip = (meal_cost * tip_percent) / 100;
