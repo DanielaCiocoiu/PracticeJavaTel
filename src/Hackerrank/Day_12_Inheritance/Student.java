@@ -16,19 +16,21 @@ public class Student extends Person {
 
 
     private int[] scores;
-    private int avg;
+
 
     public Student(String firstName, String lastName, int idNumber, int[] scores) {
         super(firstName, lastName, idNumber);
         this.scores = scores;
     }
-
+//calculates a Student object's average and returns the grade character representative
     public char calculate() {
         int sum = 0;
+
         for (int i = 0; i < scores.length; i++) {
             sum += scores[i];
         }
         int avg = (sum) / scores.length;
+
         if (90 <= avg && avg <= 100) {
             return 'O';
         } else if (80 <= avg && avg < 90) {

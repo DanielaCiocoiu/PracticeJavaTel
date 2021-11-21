@@ -23,7 +23,9 @@ public class Main {
         String lastName = scanner.next();
         int id = scanner.nextInt();
         int numScores = scanner.nextInt();
+
         int[] testScores = new int[numScores];
+
         for (int i = 0; i < numScores; i++) {
             testScores[i] = scanner.nextInt();
         }
