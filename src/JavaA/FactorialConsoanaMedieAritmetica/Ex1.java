@@ -4,7 +4,7 @@ public class Ex1 {
 
     // 1. Scrieti un program care sa calculeze si afiseze media aritmetica a numerelor pare dintr-un array.
 
-    //2. Scrieti un program care sa afiseze indexul la care se afla o anumita valoare intr-un array.
+
 
     public static void main(String[] args) {
 
@@ -23,6 +23,8 @@ public class Ex1 {
         double medie = sumPare/count;
         System.out.println("Medie: " + medie);*/
 
+
+        //2. Scrieti un program care sa afiseze indexul la care se afla o anumita valoare intr-un array.
         int nr = 7;
 
         for (int i = 0; i < arr.length; i++) {
